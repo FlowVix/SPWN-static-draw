@@ -1,0 +1,31 @@
+extract import static_draw
+
+
+draw_line(30,30,4*30,3*30,width=0.25)
+draw_line(4*30,5*30,8*30,2*30,width=0.12)
+
+draw_line(0,0,5,5,width=1) //Short thick line
+
+
+draw_regular = (x: @number, y: @number, radius: @number, sides: @number, width: @number, rot_offset: @number = 0) {
+    
+    for i in 0..sides {
+        
+        draw_line(
+            x + radius*$.cos(rot_offset + 2*3.141592/sides*i),
+            y + radius*$.sin(rot_offset + 2*3.141592/sides*i),
+            x + radius*$.cos(rot_offset + 2*3.141592/sides*(i+1)),
+            y + radius*$.sin(rot_offset + 2*3.141592/sides*(i+1)),
+            width
+        )
+
+    }
+
+}
+
+draw_regular(120,120,60,3,0.1)
+draw_regular(120 + 150,120,60,4,0.1)
+draw_regular(120 + 150*2,120,60,5,0.1)
+draw_regular(120 + 150*3,120,60,6,0.1)
+draw_regular(120 + 150*4,120,60,60,0.1)
+
